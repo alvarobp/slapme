@@ -1,4 +1,4 @@
-require 'slapme/panel'
+require 'slapme'
 
 module Slapme
   describe Panel do
