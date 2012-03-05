@@ -15,7 +15,9 @@ module Slapme
     end
 
     def images_path
-      File.join(root, 'tmp', 'images')
+      path = Settings['images_path']
+      path = File.join(root, 'tmp/images') if path.nil? || path.empty?
+      path
     end
   end
 end

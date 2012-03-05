@@ -14,7 +14,9 @@ Slapme accepts GET requests with two parameters, ``robin`` and ``batman``. It wo
 
   ``/slapme.json?robin=Hi%20Batman&batman=Shut%20Up``
 
+## Settings
 
+Copy ``config/examples/settings.yml`` into ``config/settings.yml`` and modify to customize the following:
 
-
+* ``images_path`` path to the directory on which to store generated slap images
 
