@@ -19,6 +19,10 @@ module Slapme
       path = File.join(root, 'tmp/images') if path.nil? || path.empty?
       path
     end
+
+    def base_uri
+      Settings['base_uri']
+    end
   end
 end
 
