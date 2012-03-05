@@ -27,6 +27,10 @@ module Slapme
       end
     end
 
+    def save
+      Slapme::Storage.new(self).store
+    end
+
     private
 
     def validate_robin

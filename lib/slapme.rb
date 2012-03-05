@@ -11,6 +11,10 @@ module Slapme
     def font_path
       File.join(root, 'assets', 'acmesab.ttf')
     end
+
+    def images_path
+      File.join(root, 'tmp', 'images')
+    end
   end
 end
 
@@ -18,4 +22,5 @@ require 'rmagick'
 require 'slapme/utils/rmagick_cropped_text'
 require 'slapme/caption'
 require 'slapme/canvas'
+require 'slapme/storage'
 require 'slapme/panel'
