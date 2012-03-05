@@ -28,7 +28,11 @@ module Slapme
     end
 
     def save
-      Slapme::Storage.new(self).store
+      if valid?
+        storage = Slapme::Storage.new(self)
+        storage.store
+        storage.filename
+      end
     end
 
     private

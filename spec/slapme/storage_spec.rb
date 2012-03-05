@@ -10,7 +10,11 @@ module Slapme
       subject.hash.should == hash
     end
 
-    it "stores files within images path named with hash and jpg extension" do
+    it "names files with hash and jpg extension" do
+      subject.filename.should == "#{hash}.jpg"
+    end
+
+    it "stores files within images path" do
       Slapme.stub(:images_path) { "images_path" }
       subject.filepath.should == "images_path/#{hash}.jpg"
     end

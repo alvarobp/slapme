@@ -16,8 +16,6 @@ module Slapme
       File.join(Slapme.images_path, filename)
     end
 
-    private
-
     def filename
       "#{hash}.jpg"
     end

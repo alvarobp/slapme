@@ -45,5 +45,22 @@ module Slapme
       batman_caption.width.should == 130
       batman_caption.height.should == 52
     end
+
+    it "stores the canvas image when valid" do
+      panel = Panel.new('Robin says', 'Batman slaps')
+      panel.stub(:valid? => true)
+      Storage.should_receive(:new).with(panel) {
+        stub(:filename => 'hash.jpg').
+          tap {|s| s.should_receive(:store) }
+      }
+      panel.save.should == 'hash.jpg'
+    end
+
+    it "does not store canvas image if invalid" do
+      panel = Panel.new('Robin says', '')
+      panel.stub(:valid? => false)
+      Storage.should_not_receive(:new).with(panel)
+      panel.save.should be_nil
+    end
   end
 end
