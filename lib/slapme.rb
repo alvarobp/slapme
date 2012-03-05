@@ -1,3 +1,5 @@
+require 'slapme/settings'
+
 module Slapme
   class << self
     def root
