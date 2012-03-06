@@ -14,7 +14,7 @@ module Slapme
 
     it "renders an image with cropped text" do
       image = stub
-      cropped_text_image = stub.as_null_object
+      cropped_text_image = stub(:rows => 110, :columns => 200).as_null_object
 
       subject.should_receive(:render_cropped_text).
         with('funny thing', 200, 100).
@@ -33,7 +33,7 @@ module Slapme
 
     it "sets page to a rectangle with given position" do
       image = stub.as_null_object
-      cropped_text_image = stub(:rows => stub, :columns => stub)
+      cropped_text_image = stub(:rows => 123, :columns => 321)
       subject.stub(:render_cropped_text).
         and_yield(image).
         and_return(cropped_text_image)
@@ -41,6 +41,24 @@ module Slapme
       page_rectangle = stub
       Magick::Rectangle.stub(:new).
         with(cropped_text_image.rows, cropped_text_image.columns, 123, 321).
+        and_return(page_rectangle)
+      cropped_text_image.should_receive(:page=).with(page_rectangle)
+
+      subject.render.should == cropped_text_image
+    end
+
+    it "vertically aligns caption text if image does not fill page rectangle" do
+      image = stub.as_null_object
+      cropped_text_image = stub(:rows => 60, :columns => 321)
+      subject.stub(:render_cropped_text).
+        and_yield(image).
+        and_return(cropped_text_image)
+
+      # Top position of the page should be 321 + (100 - 60)/2 = 341
+
+      page_rectangle = stub
+      Magick::Rectangle.stub(:new).
+        with(cropped_text_image.rows, cropped_text_image.columns, 123, 341).
         and_return(page_rectangle)
       cropped_text_image.should_receive(:page=).with(page_rectangle)
 

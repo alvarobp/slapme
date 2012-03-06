@@ -27,7 +27,11 @@ module Slapme
     private
 
     def page_rectangle(image)
-      Magick::Rectangle.new(image.rows, image.columns, @x, @y)
+      y = @y
+      if image.rows < @height
+        y += ((@height - image.rows).to_f / 2.0).to_i
+      end
+      Magick::Rectangle.new(image.rows, image.columns, @x, y)
     end
   end
 end
