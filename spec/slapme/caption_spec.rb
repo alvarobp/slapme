@@ -64,5 +64,21 @@ module Slapme
 
       subject.render.should == cropped_text_image
     end
+
+    it "uses smaller font size for texts longer than a certain proportion of the caption width" do
+      # The proportion is completely heuristic: 0.33
+      caption = Caption.new('this will make it', 123, 321, 50, 100) # 50*0.33 = 16.5
+      image = stub.as_null_object
+      cropped_text_image = stub(:rows => 50, :columns => 100).as_null_object
+
+      caption.should_receive(:render_cropped_text).
+        with('this will make it', 50, 100).
+        and_yield(image).
+        and_return(cropped_text_image)
+
+      image.should_receive(:pointsize=).with(8)
+
+      caption.render.should == cropped_text_image
+    end
   end
 end

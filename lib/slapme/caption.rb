@@ -15,7 +15,7 @@ module Slapme
     def render
       image = render_cropped_text(@text, @width, @height) do |img|
         img.gravity = Magick::CenterGravity
-        img.pointsize = 10
+        img.pointsize = pointsize
         img.antialias = true
         img.background_color = 'transparent'
         img.font = Slapme.font_path
@@ -32,6 +32,10 @@ module Slapme
         y += ((@height - image.rows).to_f / 2.0).to_i
       end
       Magick::Rectangle.new(image.rows, image.columns, @x, y)
+    end
+
+    def pointsize
+      (@text.size < @width * 0.33) ? 10 : 8
     end
   end
 end
