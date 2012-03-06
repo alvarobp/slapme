@@ -46,6 +46,17 @@ module Slapme
       batman_caption.height.should == 52
     end
 
+    it "strips caption texts" do
+      panel = Panel.new('   Robin says', '  Batman slaps   ')
+      canvas = stub('canvas', :captions => [])
+      Slapme::Canvas.stub(:new).with(Slapme.background_image_path) { canvas }
+
+      panel.canvas
+
+      canvas.captions.detect { |c| c.text == 'Robin says' }.should_not be_nil
+      canvas.captions.detect { |c| c.text == 'Batman slaps' }.should_not be_nil
+    end
+
     it "stores the canvas image when valid" do
       panel = Panel.new('Robin says', 'Batman slaps')
       panel.stub(:valid? => true)

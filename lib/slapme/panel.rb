@@ -19,10 +19,10 @@ module Slapme
     def canvas
       Slapme::Canvas.new(Slapme.background_image_path).tap do |canv|
         canv.captions << Slapme::Caption.new(
-          @robin, 20, 4, 130, 55
+          @robin.strip, 20, 4, 130, 55
         )
         canv.captions << Slapme::Caption.new(
-          @batman, 182, 6, 130, 52
+          @batman.strip, 182, 6, 130, 52
         )
       end
     end
