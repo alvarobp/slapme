@@ -1,6 +1,6 @@
 source :rubygems
 
-gem 'rmagick'
+gem 'rmagick', :require => false
 gem 'sinatra'
 gem 'multi_json'
 gem 'yajl-ruby'

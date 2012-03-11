@@ -26,7 +26,7 @@ module Slapme
   end
 end
 
-require 'rmagick'
+require 'RMagick'
 require 'slapme/utils/rmagick_cropped_text'
 require 'slapme/caption'
 require 'slapme/canvas'
