@@ -3,6 +3,16 @@ require 'multi_json'
 
 module Slapme
   class Server < Sinatra::Base
+    set :root, Slapme.root
+
+    get '/' do
+      index_path = File.join(self.class.public_folder, 'index.html')
+      if File.exists?(index_path)
+        File.read(index_path)
+      else
+        status 404
+      end
+    end
 
     post '/slaps.json' do
       content_type 'application/json'

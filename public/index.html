@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang='en' xml:lang='en'>
+<head>
+  <title>batman-slaps.me</title>
+</head>
+<body>
+  <h1>Batman Slaps!</h1>
+  <form action="/slaps.json">
+    <p>
+      <label for="robin">Robin says:</label>
+      <input type="text" name="robin">
+    </p>
+    <p>
+      <label for="batman">Batman slaps:</label>
+      <input type="text" name="batman">
+    </p>
+    <input type="submit" value="Slap!">
+  </form>
+  <div id="errors"></div>
+  <div id="slap"></div>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/javascripts/slapme.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      Slapme.setupForm();
+    });
+  </script>
+</body>
+</html>
