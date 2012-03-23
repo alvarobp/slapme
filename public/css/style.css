@@ -1,0 +1,258 @@
+/* ===== Author: Tony Camaiani http://tony.camaiani.it ========================== */
+/* ===== normalize ============================================================== */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+audio:not([controls]) { display: none; }
+[hidden] { display: none; }
+
+html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+body { margin: 0; font-size: 1em; line-height: 1.4; }
+body, button, input, select, textarea { font-family: sans-serif; color: #222; }
+
+::-moz-selection { background: #006799; color: #fff; text-shadow: none; }
+::selection { background: #006799; color: #fff; text-shadow: none; }
+
+a { color: #196cb6; text-decoration: none; }
+a:visited { color: #196cb6; }
+a:hover { color: #196cb6; text-decoration: underline; }
+a:focus { outline: thin dotted; }
+a:hover, a:active { outline: 0; }
+
+/*abbr[title] { border-bottom: 1px dotted; }*/
+b, strong { font-weight: bold; }
+blockquote { margin: 1em 40px; }
+dfn { font-style: italic; }
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+ins { background: #ff9; color: #000; text-decoration: none; }
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+pre, code, kbd, samp { font-family: monospace, monospace; _font-family: 'courier new', monospace; font-size: 1em; }
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+q { quotes: none; }
+q:before, q:after { content: ""; content: none; }
+small { font-size: 85%; }
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
+dd { margin: 0 0 0 40px; }
+nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+svg:not(:root) { overflow: hidden; }
+figure { margin: 0; }
+
+form { margin: 0; }
+fieldset { border: 0; margin: 0; padding: 0; }
+label { cursor: pointer; }
+legend { border: 0; *margin-left: -7px; padding: 0; }
+button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
+button, input { line-height: normal; }
+table button, table input { *overflow: auto; }
+button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; *overflow: visible; }
+button[disabled], input[disabled] { cursor: default; }
+input[type="checkbox"], input[type="radio"] { box-sizing: border-box; padding: 0; *width: 13px; *height: 13px; }
+input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; }
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+textarea { overflow: auto; vertical-align: top; resize: vertical; }
+
+input:valid, textarea:valid {  }
+input:invalid, textarea:invalid { background-color: #f0dddd; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+
+.chromeframe { margin: 0.2em 0; background: #ccc; color: black; padding: 0.2em 0; } 
+
+
+/* ===== general styles ========================================================= */
+@font-face {
+    font-family: 'KomikaAxisRegular';
+    src: url('fonts/KOMIKAX_-webfont.eot');
+    src: url('fonts/KOMIKAX_-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/KOMIKAX_-webfont.woff') format('woff'),
+         url('fonts/KOMIKAX_-webfont.ttf') format('truetype'),
+         url('fonts/KOMIKAX_-webfont.svg#KomikaAxisRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+
+    font-family: 'ACMESecretAgentRegular';
+    src: url('fonts/acmesa-webfont.eot');
+    src: url('fonts/acmesa-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/acmesa-webfont.woff') format('woff'),
+         url('fonts/acmesa-webfont.ttf') format('truetype'),
+         url('fonts/acmesa-webfont.svg#ACMESecretAgentRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+body {
+	font-family: Sans-Serif;
+	background: #196cb6;
+	font-size: 12px;
+}
+
+#container {
+	width: 860px;
+	margin: 0 auto;
+}
+
+header, nav, #main, footer {
+	padding: 10px;
+}
+
+	header h1 {
+		font-family: 'KomikaAxisRegular', sans-serif;
+		color: #ead816;
+		text-shadow: -4px 0 2px #1a171b, 0 4px 2px #1a171b, 4px 0 2px #1a171b, 0 -4px 2px #1a171b;
+		text-align: center;
+		font-size: 72px;
+		font-weight: normal;
+		letter-spacing: 4px;
+		margin: 15px 0 20px;
+	}
+		header h1 span {
+			background: url(../img/bg_header_slap.png) no-repeat 0 18px;
+			padding: 26px 27px 40px 34px;
+		}
+		
+#main {
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+.form {
+	width: 860px;
+	height: 445px ;
+	background: url(../img/bg_batman.png) no-repeat center center;
+}
+
+.form form{
+	width: 600px;
+	margin: 0 auto;
+	padding: 135px 0 0;
+}
+
+.form form div{
+	margin: 0 0 30px 0;
+}
+
+		.form label{
+			color: #EAD816;
+	    display: inline-block;
+	    font-family: 'ACMESecretAgentRegular';
+	    font-size: 20px;
+	    font-style: italic;
+	    letter-spacing: 2px;
+	    margin: 0 5px 0 0;
+	    text-align: right;
+			vertical-align: middle;
+	    width: 175px;
+		}
+
+		.form input[type="text"]{
+			border: 0 none;
+	    height: 28px;
+	    line-height: 28px;
+			width: 350px;
+			font-size: 18px;
+			padding: 5px 8px 3px;
+			border-radius: 10px; 
+			-moz-border-radius: 10px; 
+			-webkit-border-radius: 10px;
+			
+		}
+
+		.form input.submit{
+			width: 200px;
+			background: url(../img/bg_button_slap.png) no-repeat 0 0;
+			font-family: 'KomikaAxisRegular', sans-serif;
+			font-size: 42px;
+			text-shadow: -4px 0 2px #1a171b, 0 4px 2px #1a171b, 4px 0 2px #1a171b, 0 -4px 2px #1a171b;
+			letter-spacing: 4px;
+			color: #ead816;
+			border: 0;
+			padding: 7px 20px 24px 36px;
+			margin: 5px auto;
+			display: block;
+		}
+		
+		.form .errors {
+		  display: none;
+		  width: 300px;
+		  margin: 0 auto;
+		  background: #FFBBBB;
+		  border: 2px solid #EE0000;
+		  padding: 10px;
+		}
+		
+		.form .errors p {
+		  margin: 5px;
+		}
+
+
+.output{
+  display: none;
+	width: 580px;
+	text-align: center;
+	background: #fff;
+	border: 3px solid #1a171b;
+	padding: 25px 10px;
+	margin: 35px auto 0;
+	border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px;
+}
+#main .output a { display: block; margin: 15px 0 0;}
+
+
+footer {
+	font-family: 'ACMESecretAgentRegular';
+	color: #ead816;
+	text-align: center;
+}
+
+
+/* ===== media with different viewport classes ============================================ */
+@media only screen and (min-width: 35em) {
+  /* Style adjustments for viewports that meet the condition */
+}
+
+/* ===== non-semantic helper classes ============================================ */
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }
+.ir br { display: none; }
+.hidden { display: none !important; visibility: hidden; }
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+.invisible { visibility: hidden; }
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }
+.left {float: left;}
+.right {float: right;}
+.block {display: block;}
+/* ===== media queries ========================================================== */
+@media only screen and (min-width: 480px) { /* Style adjustments for viewports 480px and over go here */ }
+@media only screen and (min-width: 768px) { /* Style adjustments for viewports 768px and over go here */ }
+/* ===== print styles ========================================================== */ 
+@media print {
+  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } 
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+  thead { display: table-header-group; } 
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page { margin: 0.5cm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}

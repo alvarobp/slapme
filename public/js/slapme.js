@@ -1,31 +1,34 @@
 var Slapme = {
   renderSlapImage: function(url){
-    return '<img src="' + url + '">';
+    var output = '<a href="' + url + '">' + '<img src="' + url + '"></a>';
+    output += '<a class="image" href="' + url + '">' + url + '</a>';
+    return output;
   },
   renderErrors: function(errors) {
-    return '<p>' + errors.join('</p><p>') + '</p>';
+    return '<p>&raquo; ' + errors.join('</p><p>&raquo; ') + '</p>';
   },
   handleSuccess: function(data){
-    $('#errors').empty();
-    $('#slap').html(Slapme.renderSlapImage(data.url));
+    $('.errors').hide();
+    $('.output').html(Slapme.renderSlapImage(data.url)).show().ScrollTo();
   },
   handleError: function(error){
-    $('#slap').empty();
-    errors_elem = $('#errors')
+    $('.output').hide();
+    var errors_elem = $('.errors');
     errors_elem.empty();
     if(error.status == 422) {
-     errors = $.parseJSON(error.responseText)['errors'];
+     var errors = $.parseJSON(error.responseText)['errors'];
     } else {
-     errors = ['An error occurred while trying to slap Robin!'];
+     var errors = ['An error occurred while trying to slap Robin!'];
     }
     errors_elem.append(Slapme.renderErrors(errors));
+    errors_elem.show();
   },
   setupForm: function(){
     $('form').submit(function(e){
       e.preventDefault();
 
-      form = $(this);
-      submit = form.find('input[type=submit]');
+      var form = $(this);
+      var submit = form.find('input[type=submit]');
       submit.attr('disabled','disabled');
 
       $.post(form.attr('action'), form.serialize())

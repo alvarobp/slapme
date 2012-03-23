@@ -1,0 +1,7 @@
+/* Author:
+
+*/
+
+$(function(){
+  Slapme.setupForm();
+});
