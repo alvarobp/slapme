@@ -1,3 +1,5 @@
+require 'yaml'
+
 module Slapme
   module Settings
     def self.[](key)
