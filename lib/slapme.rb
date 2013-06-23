@@ -2,6 +2,11 @@ require 'slapme/settings'
 
 module Slapme
   class << self
+    def storage
+      settings = storage_settings['file_system']
+      Storage::FileSystem.new(settings)
+    end
+
     def root
       File.expand_path(File.dirname(__FILE__) + '/..')
     end
@@ -14,21 +19,21 @@ module Slapme
       File.join(root, 'assets', 'acmesab.ttf')
     end
 
-    def images_path
-      path = Settings['images_path']
-      path = File.join(root, 'tmp/images') if path.nil? || path.empty?
-      path
-    end
-
     def base_uri
       Settings['base_uri']
+    end
+
+    private
+
+    def storage_settings
+      Settings['storage']
     end
   end
 end
 
 require 'RMagick'
 require 'slapme/utils/rmagick_cropped_text'
+require 'slapme/storage'
 require 'slapme/caption'
 require 'slapme/canvas'
-require 'slapme/storage'
 require 'slapme/panel'

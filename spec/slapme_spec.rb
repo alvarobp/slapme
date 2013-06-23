@@ -1,20 +1,16 @@
 require 'slapme'
 
 describe Slapme do
-  describe "#images_path" do
-    it "is set to <root>/tmp/images if setting is missing" do
-      Slapme::Settings.stub(:[]).with('images_path') { nil }
-      Slapme.images_path.should == Slapme.root + '/tmp/images'
-    end
-
-    it "is set to <root>/tmp/images if setting is empty" do
-      Slapme::Settings.stub(:[]).with('images_path') { '' }
-      Slapme.images_path.should == Slapme.root + '/tmp/images'
-    end
-
-    it "is set to Settings['images_path'] if present" do
-      Slapme::Settings.stub(:[]).with('images_path') { '/a/path/to/images' }
-      Slapme.images_path.should == '/a/path/to/images'
+  describe ".storage" do
+    it "instances Storage::FileSystem with file_system storage settings" do
+      storage = double(:storage)
+      file_system_settings = double(:file_system_settings)
+      storage_settings = { 'file_system' => file_system_settings }
+      Slapme::Settings.stub(:[]).with('storage') { storage_settings }
+      Slapme::Storage::FileSystem.stub(:new).
+        with(file_system_settings).
+        and_return(storage)
+      Slapme.storage.should == storage
     end
   end
 end

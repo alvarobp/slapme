@@ -16,9 +16,8 @@ module Slapme
 
     post '/slaps.json' do
       content_type 'application/json'
-
-      if filename = panel.save
-        MultiJson.encode :url => slap_url(filename)
+      if panel.save
+        MultiJson.encode :url => slap_url(panel.hash_id)
       else
         body MultiJson.encode(:errors => panel.errors)
         status 422
@@ -26,16 +25,19 @@ module Slapme
     end
 
     get "/slaps/:hash.jpg" do
-      if image_file_exists?(params[:hash])
-        send_file image_path(params[:hash]), :type => :jpg
-      else
+      hash = params[:hash]
+      begin
+        image_data = Slapme.storage.retrieve(hash)
+        content_type :jpeg
+        image_data
+      rescue Slapme::Storage::NotFound
         status 404
       end
     end
 
     helpers do
-      def slap_url(filename)
-        "#{Slapme.base_uri}/slaps/#{filename}"
+      def slap_url(hash)
+        "#{Slapme.base_uri}/slaps/#{filename(hash)}"
       end
     end
 
@@ -45,12 +47,8 @@ module Slapme
       @panel ||= Slapme::Panel.new(params[:robin], params[:batman])
     end
 
-    def image_path(hash)
-      File.join Slapme.images_path, "#{hash}.jpg"
-    end
-
-    def image_file_exists?(hash)
-      File.exists? image_path(hash)
+    def filename(hash)
+      "#{hash}.jpg"
     end
   end
 end

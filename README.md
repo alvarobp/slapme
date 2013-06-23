@@ -22,6 +22,16 @@ and here is an example response:
 
 Copy ``config/examples/settings.yml`` into ``config/settings.yml`` and modify to customize the following:
 
-* ``images_path`` path to the directory on which to store generated slap images
 * ``base_uri`` used to generate slap urls
+* ``storage`` section containing settings for each different supported storage (e.g. file_system)
+  * ``file_system`` stores image files locally in the specified ``path``
 
+Example:
+
+```
+base_uri: http://localhost:9292
+
+storage:
+  file_system:
+    path: '/tmp/slapme/files'
+```

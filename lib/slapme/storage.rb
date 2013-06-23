@@ -1,23 +1,7 @@
 module Slapme
-  class Storage
-    def initialize(panel)
-      @panel = panel
-    end
+  module Storage
+    class NotFound < StandardError; end
 
-    def store
-      @panel.canvas.render.write(filepath)
-    end
-
-    def hash
-      Digest::SHA1.hexdigest(@panel.robin + @panel.batman)
-    end
-
-    def filepath
-      File.join(Slapme.images_path, filename)
-    end
-
-    def filename
-      "#{hash}.jpg"
-    end
+    require 'slapme/storage/file_system'
   end
 end

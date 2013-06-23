@@ -1,13 +1,15 @@
 module Slapme
   class Panel
-
-    attr_accessor :robin, :batman
-    attr_reader :errors
+    attr_reader :robin, :batman, :errors
 
     def initialize(robin, batman)
       @robin = robin
       @batman = batman
       @errors = []
+    end
+
+    def hash_id
+      Digest::SHA1.hexdigest(@robin + @batman)
     end
 
     def valid?
@@ -17,21 +19,18 @@ module Slapme
     end
 
     def canvas
-      Slapme::Canvas.new(Slapme.background_image_path).tap do |canv|
-        canv.captions << Slapme::Caption.new(
-          @robin.strip, 20, 4, 130, 55
-        )
-        canv.captions << Slapme::Caption.new(
-          @batman.strip, 182, 6, 130, 52
-        )
-      end
+      cnv = Slapme::Canvas.new(Slapme.background_image_path)
+      cnv.add_caption(robin_caption)
+      cnv.add_caption(batman_caption)
+      cnv
     end
 
     def save
       if valid?
-        storage = Slapme::Storage.new(self)
-        storage.store
-        storage.filename
+        storage.store(hash_id, canvas.render)
+        true
+      else
+        false
       end
     end
 
@@ -51,6 +50,18 @@ module Slapme
           @errors << message unless @errors.include?(message)
         end
       end
+    end
+
+    def robin_caption
+      Slapme::Caption.new(@robin.strip, 20, 4, 130, 55)
+    end
+
+    def batman_caption
+      Slapme::Caption.new(@batman.strip, 182, 6, 130, 52)
+    end
+
+    def storage
+      Slapme.storage
     end
   end
 end

@@ -1,2 +1,5 @@
-images_path: ''
 base_uri: http://localhost:9292
+
+storage:
+  file_system:
+    path: '/tmp/slapme/files'
