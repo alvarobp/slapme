@@ -3,8 +3,7 @@ require 'slapme/settings'
 module Slapme
   class << self
     def storage
-      settings = storage_settings['file_system']
-      Storage::FileSystem.new(settings)
+      @storage ||= Storage.instance(storage_settings)
     end
 
     def root

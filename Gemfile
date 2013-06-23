@@ -5,6 +5,7 @@ gem 'rack', '~> 1.5.2'
 gem 'sinatra', '~> 1.4.3'
 gem 'multi_json', '~> 1.7.7'
 gem 'yajl-ruby', '~> 1.1.0'
+gem 'aws-sdk'
 
 group :test do
   gem 'rspec', '~> 2.13.0'

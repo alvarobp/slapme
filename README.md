@@ -23,8 +23,15 @@ and here is an example response:
 Copy ``config/examples/settings.yml`` into ``config/settings.yml`` and modify to customize the following:
 
 * ``base_uri`` used to generate slap urls
-* ``storage`` section containing settings for each different supported storage (e.g. file_system)
-  * ``file_system`` stores image files locally in the specified ``path``
+* ``storage`` section containing settings for the storage to use (file_system or s3)
+  * ``file_system`` stores image files locally
+  * ``s3`` stores image files in AWS S3
+
+The storage is automatically selected based on configuration.
+
+File system storage requires a ``path`` setting indicating where to store image files in the server.
+
+AWS S3 storage requires ``access_key_id``, ``secret_access_key`` and ``bucket_name``, optional ``path`` setting allows to store images within a specific path inside the bucket.
 
 Example:
 
@@ -35,3 +42,5 @@ storage:
   file_system:
     path: '/tmp/slapme/files'
 ```
+
+Check ``config/examples`` for more setting file examples.

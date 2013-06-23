@@ -1,4 +1,4 @@
 .bundle
 .DS_Store
 tmp/
-config/settings.yml
+config/*.yml
