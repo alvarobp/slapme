@@ -1,0 +1,8 @@
+base_uri: http://localhost:9292
+
+storage:
+  s3:
+    access_key_id: 'ACCESSKEY'
+    secret_access_key: 'SECRETACCESSKEY'
+    bucket: 'bucket-name'
+    path: 'images'
